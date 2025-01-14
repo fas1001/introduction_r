@@ -76,7 +76,7 @@ editor:
 
 # Titre de niveau 1
 
-@king2021designing a écrit que le contenu de la recherche est la méthode. Les auteurs disent aussi qu'une caractéristique fondamentale de la science est qu'elle est imparfaite [@king2021designing]. 
+@king2021designing a écrit que le contenu de la recherche est la méthode. Les auteurs disent aussi qu'une caractéristique fondamentale de la science est qu'elle est imparfaite [@king2021designing].
 
 \lipsum[2-4]
 
@@ -87,5 +87,40 @@ editor:
 ### Titre de niveau 3
 
 \lipsum[11-15]
+
+# Analyse
+
+Est-ce que les riches font plus de yoga que le reste de la population?
+
+![Graphique](../../results/graphs/1_ex_bar_graph_riche_yoga.png){#fig-graphique}
+
+::: {#tbl-regression}
++----------------+-----------+
+|                | (1)       |
++================+===========+
+| (Intercept)    | -1.238*** |
++----------------+-----------+
+|                | (0.069)   |
++----------------+-----------+
+| lifestyle_yoga | 0.648**   |
++----------------+-----------+
+|                | (0.203)   |
++----------------+-----------+
+| Num.Obs.       | 1750      |
++----------------+-----------+
+| AIC            | 1952.3    |
++----------------+-----------+
+| BIC            | 1963.2    |
++----------------+-----------+
+| Log.Lik.       | -974.134  |
++----------------+-----------+
+| RMSE           | 0.43      |
++================+===========+
+| + p < 0.1, * p < 0.05, **  |
+| p < 0.01, *** p < 0.001    |
++================+===========+
+Table: Relation entre être riche et faire du yoga
+:::
+
 
 ## Bibliography
