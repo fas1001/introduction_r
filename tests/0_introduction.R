@@ -4,6 +4,9 @@
 # 1. Importer la librairie dplyr qui contient les fonctions nécessaires pour
 # manipuler les données dont select()
 library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(modelsummary)
 
 # 2. Charger les données situées dans le chemin d'accès data/raw/data_raw.csv
 # et Créez un dataframe nommé df et assignez les données à ce dataframe en
@@ -77,3 +80,46 @@ df_yoga <- df_yoga %>%
 # fonction write.csv() pour sauvegarder les données nettoyées dans le chemin
 # d'accès data/clean/data_clean.csv
 write.csv(df_yoga, "data/processed/1_ex_data_cleaned.csv", row.names = FALSE)
+
+# 9. Visualiser les données de façon descriptive
+
+# 9.1 Visualiser la distribution de la variable lifestyle_yoga_freq
+table(df_yoga$lifestyle_yoga)
+hist(df_yoga$lifestyle_yoga)
+
+# 9.2 Visualiser la distribution de la variable ses_riche
+table(df_yoga$ses_riche)
+hist(df_yoga$ses_riche)
+
+# 10. faire une régression logistique pour prédire si une personne est riche ou non
+model <- glm(ses_riche ~ lifestyle_yoga, data = df_yoga, family = "binomial")
+
+# 11. Visualiser le résumé du modèle
+summary(model)
+
+# 12. Créer un tableau de régression avec le package
+# modelsummary de Vincent Arel-Bundock
+modelsummary(model,
+  output = "results/tables/1_ex_regression.md",
+  stars = TRUE,
+  title = "Relation entre être riche et faire du yoga"
+)
+
+# 13. Manipuler les données pour pouvoir faire un graphique intéressant.
+df_tidy <- df_yoga %>%
+  group_by(lifestyle_yoga, ses_riche) %>%
+  summarise(percentage = n() / nrow(df) * 100) %>%
+  drop_na()
+
+# 14. Faire un graphique pour visualiser la relation entre le revenu et la pratique
+# du yoga
+ggplot(df_tidy, aes(x = ses_riche, y = percentage, fill = factor(lifestyle_yoga))) +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(
+    title = "Relation entre le revenu et la pratique du yoga",
+    x = "Pratique du yoga",
+    y = "Pourcentage de la population"
+  )
+
+# 15. Sauvegarder le graphique
+ggsave("results/graphs/1_ex_bar_graph_riche_yoga.png", width = 10, height = 6, dpi = 300)
