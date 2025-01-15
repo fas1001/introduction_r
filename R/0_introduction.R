@@ -94,7 +94,7 @@
 
 # 6.4 NETTOYAGE
 # -------------
-# Supprimer l'ancienne version de la variable
+# Supprimer l'ancienne version de la variable avec select()
 
 
 # 7. EXPLORATION DE LA VARIABLE DÉPENDANTE
