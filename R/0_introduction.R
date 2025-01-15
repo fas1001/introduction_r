@@ -1,157 +1,187 @@
-# Écrire la question à laquelle vous voulez répondre
-# Votre question doi être simple et comporter une variable dépendante ainsi 
-# qu'une variable indépendante.
+################################################################################
+#                        EXERCICE D'ANALYSE DE DONNÉES                          #
+################################################################################
 
-# Voici une liste de variable dépendante et indépendante que vous pouvez utiliser
+# OBJECTIF: Répondre à une question de recherche simple en utilisant l'analyse 
+# quantitative de données.
 
-# Variable dépendante:
+###############################################################################
+#                        VARIABLES DISPONIBLES                                  #
+###############################################################################
 
-# Variables indépendantes (facteurs explicatifs possibles) :
+# VARIABLES INDÉPENDANTES (facteurs explicatifs possibles):
+#   - ses_religion     : Membre d'une communauté religieuse ou non
+#   - ses_education    : Éducation supérieure ou non
+#   - ses_ethnicity    : Minorité visible ou non
+#   - lifestyle_pets   : Possession d'animaux de compagnie ou non
+#   - lifestyle_coffee : Consommation de café ou non
 
-    # ses_religion (Membre d'une communauté religieuse ou non)
-    # ses_education (Éducation supérieure ou non)
-    # ses_ethnicity (Minorité visible ou non)
-    # lifestyle_pets (Possession d’animaux de compagnie ou non)
-    # lifestyle_coffee (Consommation de café ou non)
+# VARIABLES DÉPENDANTES (résultats possibles à expliquer):
+#   - tactical_concern_climate          : Préoccupation pour le climat
+#   - lifestyle_watch_soccer_freq       : Fréquence de visionnement du soccer
+#   - lifestyle_fishing_freq            : Fréquence de pêche
+#   - lifestyle_gpt_freq               : Fréquence d'utilisation de l'IA générative
+#   - lifestyle_volunteeringsocial_freq : Fréquence de bénévolat social
 
-# Variables dépendantes (résultats possibles à expliquer) :
+###############################################################################
+#                        QUESTION DE RECHERCHE                                  #
+###############################################################################
 
-    # tactical_concern_climate (Préoccupation pour le climat)
-    # lifestyle_watch_soccer_freq (Fréquence de visionnement du soccer)
-    # lifestyle_fishing_freq (Fréquence de pêche)
-    # lifestyle_gpt_freq (Fréquence d'utilisation de l'IA générative)
-    # lifestyle_volunteeringsocial_freq (Fréquence de bénévolat social)
-
+# Écrivez votre question ci-dessous:
 # «<Écrire votre question ici>»
 
-# Ex: Est-ce que la variable indépendante influence la variable dépendante ?
-# ---------------------------------------------------------------------------
+# Exemple: Est-ce que la variable indépendante influence la variable dépendante ?
 
-# 1. Importer les librairie dplyr qui contient les fonctions nécessaires pour
-# manipuler les données dont select(). Importer aussi la librairie modelsummary
-# qui contient les fonctions nécessaires pour faire un tableau de régression,
-# ggplot2 pour faire des graphiques et la librairie tidyr pour manipuler les
-# données. Si vous n'avez pas les librairies déjà installées, vous pouvez
-# utiliser la fonction install.packages() pour les installer.
+###############################################################################
+#                        ÉTAPES DE L'ANALYSE                                    #
+###############################################################################
+
+# 1. IMPORTATION DES LIBRAIRIES
+# ----------------------------
+# Installer et charger les packages nécessaires:
+# - dplyr : pour manipuler les données
+# - modelsummary : pour les tableaux de régression
+# - ggplot2 : pour les graphiques
+# - tidyr : pour restructurer les données
+
+# Si nécessaire, installer les packages:
 # install.packages("tidyverse")
 # install.packages("modelsummary")
 
 
-# 2. Charger les données situées dans le chemin d'accès data/raw/data_raw.csv
-# et créer un dataframe nommé df pour y assigner les données 
-# utilisant la fonction read.csv()
+# 2. CHARGEMENT DES DONNÉES
+# ------------------------
+# Charger le fichier data/raw/data_raw.csv dans un dataframe nommé 'df'
 
 
-# 3. Visualiser les données du dataframe dans RStudio en utilisant 
-# la fonction View()
-
- 
-# 4. Générer la liste de tous les variables présentes dans notre dataframe en
-# utilisant la fonction names()
+# 3. EXPLORATION INITIALE
+# ----------------------
+# Visualiser les données avec View()
 
 
-# 5. Utiliser la fonction select() pour sélectionner seulement les variables
-# qui nous intéressent et les assigner à un nouveau dataframe nommé df_select
+# 4. STRUCTURE DES DONNÉES
+# -----------------------
+# Observer les noms des variables avec names()
 
 
-# 6. Utiliser table() pour afficher les valeurs uniques de la variable
-# indépendante. Vous pourrez vous servire de cette information pour déterminer 
-# comment nettoyer les données
+# 5. SÉLECTION DES VARIABLES
+# -------------------------
+# Sélectionner uniquement les variables pertinentes avec select()
 
 
-# 6.1 Créer une variable vide qui contiendra les valeurs nettoyées de 
-# votre variable indépendante. 
+# 6. EXPLORATION DE LA VARIABLE INDÉPENDANTE
+# ----------------------------------------
+# Examiner les valeurs uniques avec table()
 
 
-# 6.2 Nettoyer la variable créée en 6.1 pour qu'elle contienne 0
-# quand le répodant ne concorde pas à votre variable et 1 quand le répondant
-# concorde. Par exemple, si votre variable indépendante est
-# être riche ou non, vous pouvez créer une variable qui contient 0 pour les
-# répondants qui ne sont pas riches et 1 pour les répondants qui sont riches.
+# 6.1 PRÉPARATION DU RECODAGE
+# ---------------------------
+# Créer une nouvelle variable vide pour les valeurs recodées
 
 
-# 6.3 Utiliser table() pour afficher les valeurs uniques de la nouvelle
-# variable
+# 6.2 RECODAGE DE LA VARIABLE
+# --------------------------
+# Transformer en variable binaire (0/1)
+# Exemple avec le revenu:
+#   0 = non riche
+#   1 = riche
 
 
-# 6.4 Utiliser select() pour enlever la vieille variable indépendante
+# 6.3 VÉRIFICATION DU RECODAGE
+# ---------------------------
+# Vérifier les nouvelles valeurs avec table()
 
 
-# 7. Utiliser table() pour afficher les valeurs uniques de la variable
-# Vous pourrez vous servire de cette information pour déterminer comment
-# nettoyer les données
+# 6.4 NETTOYAGE
+# -------------
+# Supprimer l'ancienne version de la variable
 
 
-# 7.1 Créer une variable vide qui contiendra les valeurs nettoyées de 
-# votre variable dépendante. 
+# 7. EXPLORATION DE LA VARIABLE DÉPENDANTE
+# --------------------------------------
+# Examiner les valeurs uniques avec table()
 
 
-# 7.2 Nettoyer la variable créée en 7.1 pour qu'elle contienne 0
-# quand le répodant a choisi l'option le plus bas et 1 quand le répondant a 
-# choisi l'option la plus haute. Par exemple, si votre variable dépendante est
-# la fréquence à laquelle les répondants pratiquent le yoga, vous pouvez créer
-# une variable qui contient 0 pour les répondants qui ne pratiquent pas le yoga
-# 0.25 pour les répondants qui pratiquent le yoga une fois par semaine, 0.5 pour
-# les répondants qui pratiquent le yoga deux fois par semaine, 0.75 pour les
-# répondants qui pratiquent le yoga trois fois par semaine et 1 pour les
-# répondants qui pratiquent le yoga tous les jours. Vous pouvez déterminer
-# comment nettoyer les données en utilisant la fonction table() et en réfléchissant
-# à la façon dont vous voulez représenter les données.
+# 7.1 PRÉPARATION DU RECODAGE
+# --------------------------
+# Créer une nouvelle variable vide pour les valeurs recodées
 
 
-# 7.3 Utiliser table() pour afficher les valeurs uniques de la nouvelle
-# variable
+# 7.2 RECODAGE DE LA VARIABLE
+# --------------------------
+# Transformer en échelle numérique (0 à 1)
+# Exemple avec la fréquence:
+#   0    = jamais
+#   0.25 = rarement
+#   0.5  = parfois
+#   0.75 = souvent
+#   1    = très souvent
 
 
-# 7.4 Utiliser select() pour enlever la vieille variable dépendante
+# 7.3 VÉRIFICATION DU RECODAGE
+# ---------------------------
+# Vérifier les nouvelles valeurs avec table()
 
 
-# 8. Sauvegarder les données nettoyées dans un fichier csv. Utilisez la
-# fonction write.csv() pour sauvegarder les données nettoyées dans le chemin
-# d'accès data/clean/data_clean.csv
+# 7.4 NETTOYAGE
+# -------------
+# Supprimer l'ancienne version de la variable
 
 
-# 9. Visualiser les données de façon descriptive
+# 8. SAUVEGARDE DES DONNÉES NETTOYÉES
+# ---------------------------------
+# Sauvegarder en format CSV dans data/clean/data_clean.csv
 
 
-# 9.1 Visualiser la distribution de la variable indépendante
+###############################################################################
+#                        ANALYSE STATISTIQUE                                    #
+###############################################################################
+
+# 9. ANALYSE DESCRIPTIVE
+# --------------------
+
+# 9.1 Distribution de la variable indépendante
+# Utiliser table() et hist()
 
 
-# 9.2 Visualiser la distribution de la variable dépendante
+# 9.2 Distribution de la variable dépendante
+# Utiliser table() et hist()
 
 
-# 10. Un modèle de régression logistique pour étudier le lien entre votre
-# variable indépendante et votre variable dépendante. Le modèle de 
-# régression logistique est le mieux adapté pour les variables dépendantes
-# binaires comme celle que vous avez nettoyée.
+# 10. MODÉLISATION STATISTIQUE
+# --------------------------
+# Calculer un modèle de régression linéaire
+# Variable dépendante ~ Variable indépendante
 
 
-# 11. Visualiser le résumé du modèle en utilisante la fonction summary()
+# 11. RÉSULTATS DU MODÈLE
+# ----------------------
+# Examiner les résultats avec summary()
 
 
-# 12. Créer un tableau de régression avec le package modelsummary du 
-# Professeur Vincent Arel-Bundock de l'UdeM. Dans le chanp output =
-# vous pouvez spécifier le chemin d'accès où vous voulez sauvegarder le
-# tableau. Sauvegardez le tableau dans le chemin d'accès results/tables/table.md
+# 12. TABLEAU DE RÉGRESSION
+# -----------------------
+# Créer un tableau formaté avec modelsummary()
+# Sauvegarder dans results/tables/table.md
 
 
-# 13. Manipuler les données pour pouvoir faire un graphique intéressant.
-# En utilisant les fonctions group_by() et summarize(), créer un dataframe
-# qui contient la moyenne de la variable dépendante pour chaque valeur de la
-# variable indépendante.
+###############################################################################
+#                        VISUALISATION                                          #
+###############################################################################
+
+# 13. PRÉPARATION DES DONNÉES
+# -------------------------
+# Calculer les moyennes par groupe avec group_by() et summarize()
 
 
-# 14. Faire un graphique pour visualiser la relation entre le revenu et la pratique
-# du yoga. Vous pouvez utiliser la fonction ggplot() pour faire un graphique
-# en barres. dans la fonction ggplot(), vous pouvez utiliser aes() pour définir
-# les variables que vous voulez comparer. Dans votre cas, x = "votre_dépendante", 
-# y = "la_variable_créée_avec_summarize", fill = factor("votre_variable_indépendante"). 
-# Ensuite, utiliser geom_bar() pour faire un graphique en barres. Dans les 
-# paramètres de geom_bar(), vous pouvez utiliser stat = "identity"
-# et position = "dodge". 
+# 14. CRÉATION DU GRAPHIQUE
+# -----------------------
+# Créer un graphique en barres avec ggplot()
+# Utiliser:
+#   - aes() pour définir x, y, et fill
+#   - geom_bar() avec stat = "identity" et position = "dodge"
 
 
-# 15. Sauvegarder le graphique en utilisant la fonction ggsave(). Sauvegardez le dans
-# le chemin d'accès results/graphs/graph.png
-
-
+# 15. SAUVEGARDE DU GRAPHIQUE
+# -------------------------
+# Sauvegarder en PNG dans results/graphs/graph.png
