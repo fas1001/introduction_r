@@ -13,11 +13,9 @@
 #    - dplyr    : manipulation efficace des données
 #    - tidyr    : restructuration des données
 #    - ggplot2  : création de graphiques professionnels
-#    - modelsummary : création de tableaux statistiques formatés
 library(dplyr)
 library(tidyr)
 library(ggplot2)
-library(modelsummary)
 
 # 2. Charger les données
 # >> read.csv() avec les paramètres par défaut :
